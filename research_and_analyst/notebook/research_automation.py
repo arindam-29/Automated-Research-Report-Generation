@@ -449,7 +449,10 @@ print(docs)
 # ## Second Workflow
 
 # %%
-from langchain_community.tools.tavily_search import TavilySearchResults
+try:
+    from langchain_tavily import TavilySearch
+except Exception:
+    from langchain_community.tools.tavily_search import TavilySearchResults as TavilySearch
 
 # %%
 from dotenv import load_dotenv
@@ -458,7 +461,7 @@ import os
 tavily_api_key = os.getenv("TAVILY_API_KEY")
 
 # %%
-tavily_search = TavilySearchResults(tavily_api_key=tavily_api_key)
+tavily_search = TavilySearch(tavily_api_key=tavily_api_key)
 
 # %%
 tavily_search.invoke("langgraph")

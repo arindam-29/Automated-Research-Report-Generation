@@ -5,6 +5,7 @@ from datetime import datetime
 from typing import Optional
 from langgraph.types import Send
 from jinja2 import Template
+from dotenv import load_dotenv
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(current_dir, "../../"))
@@ -13,7 +14,8 @@ sys.path.append(project_root)
 from langgraph.graph import StateGraph, START, END
 from langgraph.checkpoint.memory import MemorySaver
 from langchain_core.messages import HumanMessage, SystemMessage
-from langchain_community.tools.tavily_search import TavilySearchResults
+# from langchain_community.tools.tavily_search import TavilySearchResults
+from langchain_tavily import TavilySearch
 
 from docx import Document
 from reportlab.lib.pagesizes import letter
@@ -41,10 +43,12 @@ class AutonomousReportGenerator:
     """
 
     def __init__(self, llm):
+        load_dotenv()
+
         self.llm = llm
         self.memory = MemorySaver()
-        self.tavily_search = TavilySearchResults(
-            tavily_api_key="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"
+        self.tavily_search = TavilySearch(
+            tavily_api_key=os.getenv('TAVILY_API_KEY')
         )
         self.logger = GLOBAL_LOGGER.bind(module="AutonomousReportGenerator")
 
@@ -364,11 +368,11 @@ if __name__ == "__main__":
         reporter = AutonomousReportGenerator(llm)
         graph = reporter.build_graph()
 
-        topic = "Impact of LLMs over the Future of Jobs?"
+        topic = "Womens Cricket in India"
         thread = {"configurable": {"thread_id": "1"}}
         reporter.logger.info("Starting report generation pipeline", topic=topic)
 
-        for _ in graph.stream({"topic": topic, "max_analysts": 3}, thread, stream_mode="values"):
+        for _ in graph.stream({"topic": topic, "max_analysts": 1}, thread, stream_mode="values"):
             pass
 
         state = graph.get_state(thread)

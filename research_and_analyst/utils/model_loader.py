@@ -23,6 +23,7 @@ class ApiKeyManager:
             "OPENAI_API_KEY": os.getenv("OPENAI_API_KEY"),
             "GOOGLE_API_KEY": os.getenv("GOOGLE_API_KEY"),
             "GROQ_API_KEY": os.getenv("GROQ_API_KEY"),
+
         }
 
         log.info("Initializing ApiKeyManager")
@@ -114,6 +115,7 @@ class ModelLoader:
         try:
             llm_block = self.config["llm"]
             provider_key = os.getenv("LLM_PROVIDER", "openai")
+            log.info("LLM Provider Selected", provider_key=provider_key)
 
             if provider_key not in llm_block:
                 log.error("LLM provider not found in configuration", provider=provider_key)

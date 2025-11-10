@@ -10,7 +10,7 @@ def _project_root() -> Path:
     """
     Determine the absolute path of the project root directory.
     Example:
-        /Users/arindam/Machine Learning/GenAI_2025/AgenticAI/9_Automated-Research-Report-Generation/research_and_analyst
+        Automated-Research-Report-Generation/research_and_analyst
     """
     return Path(__file__).resolve().parents[1]
 

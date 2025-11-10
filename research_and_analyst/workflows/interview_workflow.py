@@ -72,16 +72,18 @@ class InterviewGraphBuilder:
             self.logger.info("Performing Tavily web search", query=search_query.search_query)
             search_docs = self.tavily_search.invoke(search_query.search_query)
 
+            #  self.logger.info("Search results retrieved \n", search_docs=search_docs)
+
             if not search_docs:
                 self.logger.warning("No search results found")
                 return {"context": ["[No search results found.]"]}
 
             formatted = "\n\n---\n\n".join(
-                [
-                    f'<Document href="{doc.get("url", "#")}"/>\n{doc.get("content", "")}\n</Document>'
-                    for doc in search_docs
-                ]
-            )
+                    [
+                        f'<Document href="{doc.get("url", "#")}"/>\n{doc.get("content", "")}\n</Document>'
+                        for doc in search_docs['results']
+                    ]
+                )
             self.logger.info("Web search completed", result_count=len(search_docs))
             return {"context": [formatted]}
 

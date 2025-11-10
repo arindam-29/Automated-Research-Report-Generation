@@ -1,5 +1,5 @@
 astra_db:
-  collection_name: "ecommercedata"
+  collection_name: "research_reports"
 
 embedding_model:
   provider: "google"
@@ -11,7 +11,7 @@ retriever:
 llm:
   groq:
     provider: "groq"
-    model_name: "deepseek-r1-distill-llama-70b"
+    model_name: "llama-3.3-70b-versatile"
     temperature: 0
     max_output_tokens: 2048
 
@@ -23,5 +23,7 @@ llm:
 
   openai:
      provider: "openai"
-     model_name: "gpt-4o"
+     model_name: "gpt-5-nano"
+#     model_name: "gpt-4o"
      temperature: 0
+     max_output_tokens: 2048
