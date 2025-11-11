@@ -1,3 +1,4 @@
+# 10/26 (27) ~ 2 Hrs
 from pydantic import BaseModel, Field
 
 class ReportRequest(BaseModel):

@@ -81,7 +81,8 @@ class InterviewGraphBuilder:
             formatted = "\n\n---\n\n".join(
                     [
                         f'<Document href="{doc.get("url", "#")}"/>\n{doc.get("content", "")}\n</Document>'
-                        for doc in search_docs['results']
+                        # for doc in search_docs['results']
+                        for doc in search_docs
                     ]
                 )
             self.logger.info("Web search completed", result_count=len(search_docs))

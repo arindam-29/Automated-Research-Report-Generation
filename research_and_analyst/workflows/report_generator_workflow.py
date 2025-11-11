@@ -14,8 +14,8 @@ sys.path.append(project_root)
 from langgraph.graph import StateGraph, START, END
 from langgraph.checkpoint.memory import MemorySaver
 from langchain_core.messages import HumanMessage, SystemMessage
-# from langchain_community.tools.tavily_search import TavilySearchResults
-from langchain_tavily import TavilySearch
+from langchain_community.tools.tavily_search import TavilySearchResults
+# from langchain_tavily import TavilySearch
 
 from docx import Document
 from reportlab.lib.pagesizes import letter
@@ -47,7 +47,8 @@ class AutonomousReportGenerator:
 
         self.llm = llm
         self.memory = MemorySaver()
-        self.tavily_search = TavilySearch(
+        self.tavily_search = TavilySearchResults(
+        # self.tavily_search = TavilySearch(
             tavily_api_key=os.getenv('TAVILY_API_KEY')
         )
         self.logger = GLOBAL_LOGGER.bind(module="AutonomousReportGenerator")
