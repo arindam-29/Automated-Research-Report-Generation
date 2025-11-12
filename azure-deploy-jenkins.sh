@@ -1,4 +1,5 @@
 #!/bin/bash
+# 11/1 (28) ~ 2 Hrs
 
 # Azure Deployment Script for Jenkins
 # Deploys Jenkins with Python 3.11 and Azure CLI for Research Report Generation CI/CD
