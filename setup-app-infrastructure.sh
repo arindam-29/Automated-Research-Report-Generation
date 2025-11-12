@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 11/2 (19) ~ 6 mins
+# 11/2 (29) ~ 6 mins and 11/8 (30) ~ 10 mins
 # Setup Application Infrastructure for Research Report Generation System
 # Creates: Resource Group, ACR, Container Apps Environment, File Share
 

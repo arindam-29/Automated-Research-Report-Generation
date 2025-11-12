@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 11/1 (28) ~ 2 Hrs
+# 11/2 (29) ~ 6 mins and 11/8 (30) ~ 10 mins
 # Build and Push Docker Image for Research Report Generation System
 
 set -e

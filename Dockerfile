@@ -1,4 +1,4 @@
-# 11/1 (28) ~ 2 Hrs
+# 11/2 (29) ~ 6 mins and 11/8 (30) ~ 10 mins
 # Multi-stage build for Research Report Generation System
 FROM python:3.11-slim AS builder
 
